@@ -1,0 +1,44 @@
+.navbar {
+  height: 50px;
+  background-color: lightseagreen;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.logo {
+  font-weight: 900;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  position: relative;
+  margin-left: 15px;
+}
+
+
+.iconImg {
+  width: 20px;
+  height: 20px;
+}
+
+.counter {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  height: 5px;
+  width: 5px;
+  padding: 5px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
