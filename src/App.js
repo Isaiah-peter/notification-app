@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import Card from "./component/card/Card";
 import Navbar from "./component/navbar/Navbar";
+import { post } from "./data";
 
 function App() {
   const [username, setUsername] = useState("");
@@ -13,7 +14,7 @@ function App() {
       {user ? (
         <>
           <Navbar />
-          <Card />
+          <Card post={post} />
           <span className="username">{username}</span>
         </>
       ) : (
