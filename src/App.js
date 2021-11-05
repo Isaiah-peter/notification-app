@@ -14,7 +14,9 @@ function App() {
       {user ? (
         <>
           <Navbar />
-          <Card post={post} />
+          {post.map((item) => (
+            <Card id={item.id} post={item} />
+          ))}
           <span className="username">{username}</span>
         </>
       ) : (

@@ -7,6 +7,7 @@ import Info from "../../img/info.svg";
 import Comment from "../../img/comments.svg";
 
 const Card = ({ post }) => {
+  console.log(post);
   return (
     <div className="card">
       <div className="info">
