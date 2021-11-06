@@ -1,6 +1,5 @@
 import React from "react";
 import "./card.css";
-import Heart from "../../img/heart.svg";
 import HeartFill from "../../img/heartfilled.svg";
 import Share from "../../img/share.svg";
 import Info from "../../img/info.svg";
@@ -16,7 +15,7 @@ const Card = ({ post }) => {
       </div>
       <img src={post.postimg} alt="" className="postimg" />
       <div className="interaction">
-        <img src={Heart} alt="" className="cardIcon" />
+        <img src={HeartFill} alt="" className="cardIcon" />
         <img src={Comment} alt="" className="cardIcon" />
         <img src={Share} alt="" className="cardIcon" />
         <img src={Info} alt="" className="cardIcon" />
