@@ -1,13 +1,18 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./component/card/Card";
 import Navbar from "./component/navbar/Navbar";
 import { post } from "./data";
+import { io } from "socket.io-client";
 
 function App() {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState("");
-  console.log(user);
+
+  useEffect(() => {
+    const socket = io("http://localhost:5000");
+    console.log(socket);
+  }, []);
 
   return (
     <div className="container">
@@ -15,7 +20,7 @@ function App() {
         <>
           <Navbar />
           {post.map((item) => (
-            <Card id={item.id} post={item} />
+            <Card key={item.id} post={item} />
           ))}
           <span className="username">{username}</span>
         </>
