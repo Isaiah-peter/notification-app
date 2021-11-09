@@ -3,17 +3,16 @@ import "./card.css";
 import Heart from "../../img/heart.svg";
 import HeartFill from "../../img/heartfilled.svg";
 import Share from "../../img/share.svg";
-import Info from "../../img/info.svg";
 import Comment from "../../img/comments.svg";
 
 const Card = ({ post, socket, user }) => {
   const [like, setLike] = useState(false);
 
-  const handleNotification = ({ type }) => {
+  const handleNotification = (type) => {
     socket?.emit("sendNotification", {
       senderName: user,
-      receiverName: post.username,
-      type,
+      receiverName: post.name,
+      type: type,
     });
   };
 
@@ -32,6 +31,7 @@ const Card = ({ post, socket, user }) => {
             className="cardIcon"
             onClick={() => {
               setLike(!like);
+              handleNotification(1);
             }}
           />
         ) : (
@@ -41,18 +41,22 @@ const Card = ({ post, socket, user }) => {
             className="cardIcon"
             onClick={() => {
               setLike(!like);
-              handleNotification(1);
+              handleNotification(2);
             }}
           />
         )}
         <img
           src={Comment}
-          onClick={() => handleNotification(2)}
+          onClick={() => handleNotification(3)}
           alt=""
           className="cardIcon"
         />
-        <img src={Share} alt="" className="cardIcon" />
-        <img src={Info} alt="" className="cardIcon" />
+        <img
+          onClick={() => handleNotification(4)}
+          src={Share}
+          alt=""
+          className="cardIcon"
+        />
       </div>
     </div>
   );
