@@ -13,7 +13,7 @@ const Navbar = ({ socket }) => {
     });
   }, [socket]);
 
-  const displayName = ({ senderName, type }) => {
+  const displayName = (senderName, type) => {
     let actions;
 
     if (type === 1) {
@@ -32,7 +32,12 @@ const Navbar = ({ socket }) => {
       actions = "share your post";
     }
 
-    return <div className="notification">{`${senderName} ${actions}`}</div>;
+    return <span className="notification">{`${senderName} ${actions}`}</span>;
+  };
+
+  const handleRead = () => {
+    setNotification([]);
+    setOpen(false);
   };
 
   console.log(notification);
@@ -42,20 +47,23 @@ const Navbar = ({ socket }) => {
       <div className="icons">
         <div className="icon" onClick={() => setOpen(!open)}>
           <img src={Notification} alt="" className="iconImg" />
-          <span className="counter">2</span>
+          {notification.length !== 0 && (
+            <span className="counter">{notification.length}</span>
+          )}
         </div>
         <div className="icon" onClick={() => setOpen(!open)}>
           <img src={Message} alt="" className="iconImg" />
-          <span className="counter">2</span>
         </div>
         <div className="icon" onClick={() => setOpen(!open)}>
           <img src={Settings} alt="" className="iconImg" />
-          <span className="counter">2</span>
         </div>
       </div>
       {open && (
         <div className="notifications">
           {notification.map((item) => displayName(item.senderName, item.type))}
+          <button className="markbutton" onClick={handleRead}>
+            Mark as read
+          </button>
         </div>
       )}
     </div>
